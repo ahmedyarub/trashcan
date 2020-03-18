@@ -9,6 +9,13 @@
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <style>
+        #map {
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+
     <!--begin::Fonts -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
@@ -259,7 +266,8 @@
 												</g>
 											</svg></span><span class="kt-menu__link-text">Trashcans</span></a></li>
                             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                                    href="index&demo=demo1.html" class="kt-menu__link "><span
+                                    href="{{auth()->user()->name === 'admin'?action('SuggestionController@index'): action('SuggestionController@add')}}"
+                                    class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
@@ -275,7 +283,7 @@
 												</g>
 											</svg></span><span class="kt-menu__link-text">Suggestion</span></a></li>
                             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                                    href="index&demo=demo1.html" class="kt-menu__link "><span
+                                    href="{{action('SchedulingController@index')}}" class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
@@ -291,7 +299,7 @@
 												</g>
 											</svg></span><span class="kt-menu__link-text">Scheduling</span></a></li>
                             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                                    href="index&demo=demo1.html" class="kt-menu__link "><span
+                                    href="{{action('ReportController@index')}}" class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
@@ -475,7 +483,7 @@
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
 
-                    @yield('content')
+                @yield('content')
             </div>
 
             <!-- begin:: Footer -->
@@ -1519,8 +1527,6 @@
 
 <!--end::Global Theme Bundle -->
 
-<!--begin::Page Vendors(used by this page) -->
-<script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
 
 <!--end::Page Vendors -->
 

@@ -18,6 +18,8 @@ class CreateTrashcansTable extends Migration
             $table->integer('fill_level')->default(0);
             $table->string('longitude')->default(0);
             $table->string('latitude')->default(0);
+            $table->integer('last_collection_delay')->default(0);
+            $table->timestamp('last_collection_time')->useCurrent();
             $table->timestamps();
         });
     }

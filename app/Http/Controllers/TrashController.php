@@ -14,11 +14,11 @@ class TrashController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('update');
     }
 
     /**
-     * Show the application dashboard.
+     * Show the trashcan list
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -48,6 +48,11 @@ class TrashController extends Controller
         $trashcan->longitude = $request->input('longitude');
         $trashcan->latitude = $request->input('latitude');
         $trashcan->fill_level = (int)$request->input('fill_level');
+
+        if ($trashcan->fill_level === 0) {
+            $trashcan->last_collection_delay = $trashcan->last_collection_time->diffInHours(now());
+            $trashcan->last_collection_time = now();
+        }
 
         $trashcan->save();
 

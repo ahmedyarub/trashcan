@@ -14,4 +14,13 @@ class Trashcan extends Model
     protected $fillable = [
         'fill_level', 'longitude', 'latitude'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'last_collection_time',
+    ];
 }
